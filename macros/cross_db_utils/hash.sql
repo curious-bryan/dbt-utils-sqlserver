@@ -4,7 +4,7 @@
 
 
 {% macro default__hash(field) -%}
-    md5(cast({{field}} as {{dbt_utils_sqlserver.type_string()}}))
+    convert(varchar(32), hashbytes('md5', {{field}}), 2) 
 {%- endmacro %}
 
 
